@@ -1,0 +1,55 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="40" x2="1040" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFC544"/>
+      <stop offset="0.46" stop-color="#FFE28A"/>
+      <stop offset="1" stop-color="#00B8C8"/>
+    </linearGradient>
+    <linearGradient id="card" x1="182" y1="166" x2="974" y2="748" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.98"/>
+      <stop offset="1" stop-color="#FFF9EF" stop-opacity="0.96"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="214" y1="196" x2="988" y2="612" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F2236"/>
+      <stop offset="1" stop-color="#173C56"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="232" y1="208" x2="860" y2="558" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5B333"/>
+      <stop offset="1" stop-color="#35CFE0"/>
+    </linearGradient>
+    <filter id="shadow" x="120" y="110" width="970" height="720" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="28" stdDeviation="28" flood-color="#102333" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" rx="32" fill="url(#bg)"/>
+  <circle cx="1040" cy="128" r="154" fill="white" fill-opacity="0.16"/>
+  <circle cx="160" cy="140" r="92" fill="white" fill-opacity="0.13"/>
+  <circle cx="1060" cy="710" r="96" fill="#0F2236" fill-opacity="0.07"/>
+  <path d="M92 700C238 574 388 566 554 654C706 735 844 760 1106 650" stroke="white" stroke-opacity="0.22" stroke-width="20" stroke-linecap="round"/>
+  <g filter="url(#shadow)">
+    <rect x="160" y="142" width="886" height="620" rx="40" fill="url(#card)"/>
+    <rect x="198" y="180" width="810" height="426" rx="30" fill="url(#screen)"/>
+    <rect x="222" y="204" width="762" height="378" rx="26" fill="#142E45"/>
+    <rect x="260" y="238" width="688" height="314" rx="22" fill="url(#glow)" fill-opacity="0.88"/>
+    <circle cx="370" cy="390" r="84" fill="white" fill-opacity="0.24"/>
+    <circle cx="535" cy="376" r="58" fill="white" fill-opacity="0.34"/>
+    <circle cx="668" cy="398" r="72" fill="white" fill-opacity="0.24"/>
+    <rect x="304" y="432" width="132" height="84" rx="24" fill="white" fill-opacity="0.86"/>
+    <rect x="484" y="420" width="118" height="96" rx="26" fill="white" fill-opacity="0.78"/>
+    <rect x="640" y="440" width="146" height="76" rx="24" fill="white" fill-opacity="0.82"/>
+    <rect x="820" y="258" width="116" height="222" rx="38" fill="#0F2236" fill-opacity="0.20"/>
+    <circle cx="878" cy="315" r="42" fill="white" fill-opacity="0.75"/>
+    <circle cx="878" cy="315" r="14" fill="#0F2236" fill-opacity="0.7"/>
+    <path d="M290 548H920" stroke="white" stroke-opacity="0.45" stroke-width="10" stroke-linecap="round"/>
+    <rect x="198" y="626" width="810" height="136" fill="#FFF9EF"/>
+    <rect x="234" y="670" width="212" height="16" rx="8" fill="#DCEAF3"/>
+    <rect x="234" y="698" width="164" height="14" rx="7" fill="#DCEAF3"/>
+    <rect x="790" y="668" width="184" height="54" rx="27" fill="#F5F9FC"/>
+  </g>
+  <rect x="182" y="112" width="182" height="52" rx="26" fill="white" fill-opacity="0.92"/>
+  <text x="273" y="145" text-anchor="middle" fill="#0F2236" font-size="23" font-weight="800" font-family="Arial, Helvetica, sans-serif">Brand Activation</text>
+  <text x="234" y="716" fill="#0F2236" font-size="54" font-weight="800" font-family="Arial, Helvetica, sans-serif">Brand Launch</text>
+  <text x="234" y="764" fill="#5C6C7A" font-size="28" font-weight="700" font-family="Arial, Helvetica, sans-serif">Videobooth 360</text>
+  <text x="952" y="703" text-anchor="end" fill="#0F2236" font-size="22" font-weight="700" font-family="Arial, Helvetica, sans-serif">360 content spotlight</text>
+  <text x="952" y="732" text-anchor="end" fill="#5C6C7A" font-size="18" font-weight="600" font-family="Arial, Helvetica, sans-serif">Movement Photobooth</text>
+</svg>
