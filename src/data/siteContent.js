@@ -20,9 +20,9 @@ export const siteMeta = {
 
 export const contactInfo = {
   businessName: 'Movement Photobooth',
-  whatsappNumber: '6281234567890',
-  whatsappDisplay: '+62 812-3456-7890',
-  phoneDisplay: '+62 812-3456-7890',
+  whatsappNumber: '6282177487703',
+  whatsappDisplay: '+62 821-7748-7703',
+  phoneDisplay: '+62 821-7748-7703',
   email: 'hello@movementphotobooth.id',
   address: 'Jl. Cempaka Raya No. 18, Bintaro, Tangerang Selatan',
   mapsLink: 'https://maps.google.com/?q=Jl.%20Cempaka%20Raya%20No.%2018%20Bintaro%20Tangerang%20Selatan',

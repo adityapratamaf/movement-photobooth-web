@@ -226,8 +226,7 @@ export default function PhotoBoothOnlinePage() {
     context.fillStyle = '#5e6d7b';
     context.font = '500 32px Inter, sans-serif';
     context.fillText(formatDateLabel(), 120, 1565);
-    context.fillText('📷 IG & 🎵 TikTok @movement.photobooth', 120, 1620);
-    context.fillText('#movementphotobooth', 120, 1660);
+    context.fillText('@movement.photobooth | #movementphotobooth', 120, 1620);
 
     context.fillStyle = '#00b8c8';
     context.fillRect(120, 1670, 220, 16);
@@ -306,6 +305,15 @@ export default function PhotoBoothOnlinePage() {
             <div className="online-action-row">
               <button
                 type="button"
+                className="button button-secondary"
+                onClick={startCamera}
+              >
+                <RefreshIcon className="button-icon" />
+                Ulang kamera
+              </button>
+
+              <button
+                type="button"
                 className="button button-primary"
                 onClick={generateFrame}
                 disabled={permissionState !== 'granted' || isProcessing}
@@ -317,22 +325,12 @@ export default function PhotoBoothOnlinePage() {
               <button
                 type="button"
                 className="button button-secondary"
-                onClick={startCamera}
-              >
-                <RefreshIcon className="button-icon" />
-                Ulang kamera
-              </button>
-
-              <button
-                type="button"
-                className="button button-secondary"
                 onClick={switchCamera}
                 disabled={permissionState !== 'granted'}
               >
                 <SwitchHorizontalIcon className="button-icon" />
                 Ganti kamera
               </button>
-
             </div>
           </div>
 
