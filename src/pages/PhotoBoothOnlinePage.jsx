@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { createWhatsAppLink } from '../data/siteContent';
-import { ArrowRightIcon, CameraIcon, DownloadIcon, RefreshIcon } from '../components/icons';
+import { ArrowRightIcon, CameraIcon, DownloadIcon, RefreshIcon, SwitchHorizontalIcon } from '../components/icons';
 
 const FRAME_WIDTH = 1200;
 const FRAME_HEIGHT = 1800;
@@ -26,6 +26,9 @@ export default function PhotoBoothOnlinePage() {
   const [downloadUrl, setDownloadUrl] = useState('');
   const [captureReady, setCaptureReady] = useState(false);
 
+  // add
+  const [facingMode, setFacingMode] = useState('user');
+
   const stopStream = () => {
     if (streamRef.current) {
       streamRef.current.getTracks().forEach((track) => track.stop());
@@ -41,8 +44,14 @@ export default function PhotoBoothOnlinePage() {
 
     try {
       const mediaStream = await navigator.mediaDevices.getUserMedia({
+        // video: {
+        //   facingMode: 'user',
+        //   width: { ideal: 1280 },
+        //   height: { ideal: 960 },
+        // },
+
         video: {
-          facingMode: 'user',
+          facingMode: facingMode,
           width: { ideal: 1280 },
           height: { ideal: 960 },
         },
@@ -59,6 +68,36 @@ export default function PhotoBoothOnlinePage() {
       setPermissionState('granted');
     } catch (error) {
       setPermissionState('denied');
+    }
+  };
+
+  const switchCamera = async () => {
+    const newMode = facingMode === 'user' ? 'environment' : 'user';
+    setFacingMode(newMode);
+
+    // restart kamera dengan mode baru
+    stopStream();
+
+    try {
+      const mediaStream = await navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: { exact: newMode },
+          width: { ideal: 1280 },
+          height: { ideal: 960 },
+        },
+        audio: false,
+      });
+
+      streamRef.current = mediaStream;
+
+      if (videoRef.current) {
+        videoRef.current.srcObject = mediaStream;
+        await videoRef.current.play();
+      }
+
+      setPermissionState('granted');
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -121,7 +160,36 @@ export default function PhotoBoothOnlinePage() {
     context.save();
     roundRect(context, PHOTO_X, PHOTO_Y, PHOTO_WIDTH, PHOTO_HEIGHT, 36);
     context.clip();
-    context.drawImage(video, cropX, cropY, cropWidth, cropHeight, PHOTO_X, PHOTO_Y, PHOTO_WIDTH, PHOTO_HEIGHT);
+    // context.drawImage(video, cropX, cropY, cropWidth, cropHeight, PHOTO_X, PHOTO_Y, PHOTO_WIDTH, PHOTO_HEIGHT);
+    if (facingMode === 'user') {
+      context.save();
+      context.scale(-1, 1);
+      context.drawImage(
+        video,
+        cropX,
+        cropY,
+        cropWidth,
+        cropHeight,
+        -(PHOTO_X + PHOTO_WIDTH),
+        PHOTO_Y,
+        PHOTO_WIDTH,
+        PHOTO_HEIGHT
+      );
+      context.restore();
+    } else {
+      context.drawImage(
+        video,
+        cropX,
+        cropY,
+        cropWidth,
+        cropHeight,
+        PHOTO_X,
+        PHOTO_Y,
+        PHOTO_WIDTH,
+        PHOTO_HEIGHT
+      );
+    }
+
     context.restore();
 
     context.strokeStyle = 'rgba(18,38,58,0.08)';
@@ -213,14 +281,35 @@ export default function PhotoBoothOnlinePage() {
             </div>
 
             <div className="online-action-row">
-              <button type="button" className="button button-primary" onClick={generateFrame} disabled={permissionState !== 'granted' || isProcessing}>
+              <button
+                type="button"
+                className="button button-primary"
+                onClick={generateFrame}
+                disabled={permissionState !== 'granted' || isProcessing}
+              >
                 <CameraIcon className="button-icon" />
                 {isProcessing ? 'Memproses...' : 'Jepret sekarang'}
               </button>
-              <button type="button" className="button button-secondary" onClick={startCamera}>
+
+              <button
+                type="button"
+                className="button button-secondary"
+                onClick={startCamera}
+              >
                 <RefreshIcon className="button-icon" />
                 Ulang kamera
               </button>
+
+              <button
+                type="button"
+                className="button button-secondary"
+                onClick={switchCamera}
+                disabled={permissionState !== 'granted'}
+              >
+                <SwitchHorizontalIcon className="button-icon" />
+                Ganti kamera
+              </button>
+
             </div>
           </div>
 

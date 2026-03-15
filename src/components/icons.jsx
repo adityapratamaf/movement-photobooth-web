@@ -135,3 +135,36 @@ export function RefreshIcon(props) {
     </svg>
   );
 }
+
+export function SwitchHorizontalIcon(props) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <path 
+        d="M4 8H16" 
+        stroke="currentColor" 
+        strokeWidth="1.8" 
+        strokeLinecap="round" 
+      />
+      <path 
+        d="M13 5L16 8L13 11" 
+        stroke="currentColor" 
+        strokeWidth="1.8" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+      />
+      <path 
+        d="M20 16H8" 
+        stroke="currentColor" 
+        strokeWidth="1.8" 
+        strokeLinecap="round" 
+      />
+      <path 
+        d="M11 13L8 16L11 19" 
+        stroke="currentColor" 
+        strokeWidth="1.8" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+      />
+    </svg>
+  );
+}
