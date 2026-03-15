@@ -204,7 +204,7 @@ export default function PhotoBoothOnlinePage() {
     context.fillStyle = '#5e6d7b';
     context.font = '500 32px Inter, sans-serif';
     context.fillText(formatDateLabel(), 120, 1565);
-    context.fillText('Tanpa simpan database • langsung download', 120, 1620);
+    context.fillText('📷 IG @movement.photobooth   🎵 TikTok @movement.photobooth', 120, 1620);
 
     context.fillStyle = '#00b8c8';
     context.fillRect(120, 1670, 220, 16);
