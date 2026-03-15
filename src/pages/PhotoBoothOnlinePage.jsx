@@ -226,7 +226,8 @@ export default function PhotoBoothOnlinePage() {
     context.fillStyle = '#5e6d7b';
     context.font = '500 32px Inter, sans-serif';
     context.fillText(formatDateLabel(), 120, 1565);
-    context.fillText('📷 IG @movement.photobooth   🎵 TikTok @movement.photobooth', 120, 1620);
+    context.fillText('📷 IG & 🎵 TikTok @movement.photobooth', 120, 1620);
+    context.fillText('#movementphotobooth', 120, 1660);
 
     context.fillStyle = '#00b8c8';
     context.fillRect(120, 1670, 220, 16);
@@ -253,7 +254,7 @@ export default function PhotoBoothOnlinePage() {
           <div className="online-top-copy">
             <span className="eyebrow">Photobooth Online</span>
             <h1>Masuk kamera. Jepret. Jadi frame ala photobooth. Langsung download.</h1>
-            <p>Nggak pakai database. Nggak nyimpen hasil user. Semua proses langsung di browser pengguna.</p>
+            <p>Nggak pakai database dan nggak nyimpen hasil foto kamu. Semua proses langsung di browser.</p>
             <div className="hero-actions">
               <button type="button" className="button button-primary" onClick={startCamera}>
                 <CameraIcon className="button-icon" />
