@@ -26,8 +26,6 @@ export default function PhotoBoothOnlinePage() {
   const [downloadUrl, setDownloadUrl] = useState('');
   const [captureReady, setCaptureReady] = useState(false);
   const cameraSectionRef = useRef(null);
-
-  // add
   const [facingMode, setFacingMode] = useState('user');
 
   const stopStream = () => {
@@ -68,6 +66,7 @@ export default function PhotoBoothOnlinePage() {
     }
   };
 
+  // Switch Kamera
   const switchCamera = async () => {
     const newMode = facingMode === 'user' ? 'environment' : 'user';
     setFacingMode(newMode);
@@ -96,6 +95,32 @@ export default function PhotoBoothOnlinePage() {
 
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  // Share Hasil 
+  const sharePhoto = async () => {
+    if (!downloadUrl) return;
+
+    try {
+      const response = await fetch(downloadUrl);
+      const blob = await response.blob();
+
+      const file = new File([blob], "movement-photobooth.png", {
+        type: "image/png",
+      });
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: "Movement Photobooth",
+          text: "Fotobooth Online dari Movement Photobooth ✨",
+        });
+      } else {
+        alert("Browser kamu belum support fitur share. Silakan download lalu share manual.");
+      }
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -330,6 +355,16 @@ export default function PhotoBoothOnlinePage() {
                 <DownloadIcon className="button-icon" />
                 Download hasil
               </a>
+
+              <button
+                type="button"
+                className="button button-secondary"
+                onClick={sharePhoto}
+                disabled={!downloadUrl}
+              >
+                Share ke IG / WA
+              </button>
+
             </div>
           </div>
         </div>
