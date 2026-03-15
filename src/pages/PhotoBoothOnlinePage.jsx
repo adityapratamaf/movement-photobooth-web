@@ -25,6 +25,7 @@ export default function PhotoBoothOnlinePage() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState('');
   const [captureReady, setCaptureReady] = useState(false);
+  const cameraSectionRef = useRef(null);
 
   // add
   const [facingMode, setFacingMode] = useState('user');
@@ -42,14 +43,10 @@ export default function PhotoBoothOnlinePage() {
     setCaptureReady(false);
     setPermissionState('loading');
 
+    cameraSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+
     try {
       const mediaStream = await navigator.mediaDevices.getUserMedia({
-        // video: {
-        //   facingMode: 'user',
-        //   width: { ideal: 1280 },
-        //   height: { ideal: 960 },
-        // },
-
         video: {
           facingMode: facingMode,
           width: { ideal: 1280 },
@@ -96,6 +93,7 @@ export default function PhotoBoothOnlinePage() {
       }
 
       setPermissionState('granted');
+
     } catch (error) {
       console.error(error);
     }
@@ -160,7 +158,6 @@ export default function PhotoBoothOnlinePage() {
     context.save();
     roundRect(context, PHOTO_X, PHOTO_Y, PHOTO_WIDTH, PHOTO_HEIGHT, 36);
     context.clip();
-    // context.drawImage(video, cropX, cropY, cropWidth, cropHeight, PHOTO_X, PHOTO_Y, PHOTO_WIDTH, PHOTO_HEIGHT);
     if (facingMode === 'user') {
       context.save();
       context.scale(-1, 1);
@@ -254,7 +251,7 @@ export default function PhotoBoothOnlinePage() {
         </div>
       </section>
 
-      <section className="section section-bottom-spacer">
+      <section ref={cameraSectionRef} className="section section-bottom-spacer">
         <div className="container online-booth-shell">
           <div className="online-camera-card">
             <div className="online-card-head">
